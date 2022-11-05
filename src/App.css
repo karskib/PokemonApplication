@@ -1,0 +1,96 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin:0;
+    padding: 0;
+}
+
+nav{
+    display:flex;
+    justify-content: space-between;
+}
+
+.poke-container{
+    display:grid;
+    grid-template-columns: auto auto auto auto;
+    gap:10px;
+}
+
+.wrapper{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h3{
+    text-align: center;
+    text-transform: capitalize;
+}
+
+
+.photos{
+    display:flex;
+    justify-content: space-evenly;
+}
+.stats-component{
+    color:black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.stat-name{
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+.counter{
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.pokemon-generator{
+    position: absolute;
+    top:10%;
+    left:50%;
+}
+
+.favorites-section{
+    display: flex;
+    justify-content: space-evenly;
+    border: 1px solid black;
+}
+.fav-img{
+    width:100px;
+}
+.fav-poke{
+    display:flex;
+    flex-direction: column;
+    border: 1px dotted lightblue
+}
+
+.title-page{
+    display:flex;
+    justify-content: space-between;
+}
+
+.nav-links{
+    display:flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+.fav-pokemon{
+    display:flex;
+    flex-direction: column;
+}
+
+.favorite-pokemons-page > main{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+}
