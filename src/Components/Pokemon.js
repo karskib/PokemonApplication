@@ -17,14 +17,14 @@ export default function Pokemon( {frontSide,
             <img src = {backSide} alt = ""></img>
         </div>
         <select>
-            {moves.map(move => {
-                return <option>{move.move.name}</option>
+            {moves.map( (move, i) => {
+                return <option key={i}>{move.move.name}</option>
             })}
         </select>
         <div className = 'stat-section' >
-                {stats.map(stat => {
+                {stats.map( (stat,i) => {
                   return <PokemonStat
-                  key={Math.floor(Math.random() * 10000)}
+                  key= {i}
                   statName={stat.stat.name}
                   statValue = {stat.base_stat} 
                    />

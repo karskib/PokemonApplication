@@ -5,7 +5,7 @@ export default function FavoritePokemon( { favoritePokemons }) {
     <div className='favorite-pokemons-page'>
     <main>
       { favoritePokemons.map( favPoke => {
-        return <div className='fav-pokemon'>
+        return <div className='fav-pokemon' key={favPoke.name}>
             <h3> {favPoke.name}</h3>
              <img src = {favPoke.photoFront} alt = ""></img>
           </div>

@@ -19,7 +19,6 @@ function App() {
          (data) => { console.log(data)
         setPokemonList(prev=> {
           return  [...prev, {
-            id:id + Math.floor(Math.random()*10),
             back_photo: data.sprites.back_default,
             front_photo: data.sprites.front_default,
             stats:data.stats,
@@ -44,6 +43,7 @@ function App() {
           <PokemonList 
             getPokemon={fetchPokemons}
             setFavPokemon={setFavPokemon} 
+            favPokemon = {favPokemon}
             pokemonList = {pokemonList}
             setPokemonList = {setPokemonList}
             setPokemonCount = {setPokemonCount}

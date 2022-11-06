@@ -94,3 +94,7 @@ h3{
     flex-wrap: wrap;
     
 }
+.pokemon-active{
+    background-color: rgb(118, 227, 118);
+
+}
