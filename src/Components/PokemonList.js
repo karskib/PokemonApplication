@@ -45,7 +45,7 @@ export default function PokemonList( {
                     } }> Like</button>
                         <button onClick = { () => {
                             setActiveIndex( {index: i,
-                                stuats: false})
+                                status: false})
                             setFavPokemon(
                                 favPokemon.filter( (el) => el.name !==elem.name)
                             )
