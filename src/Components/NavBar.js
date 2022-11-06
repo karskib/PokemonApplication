@@ -10,6 +10,7 @@ export default function NavBar() {
         <ul className = "nav-links">
             <Link to = "/favpokemons">Go to Favorite Pokemons</Link>
             <Link to = "/">Go to Main</Link>
+            <Link to = "/pokequiz">Quiz</Link>
         </ul>
     </nav>
   )

@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import NavBar from './Components/NavBar';
 import FavoritePokemon from "./Components/FavoritePokemon"
 import { getPokemon } from './getPokemon';
+import Quiz from './Components/Quiz';
 
 
 function App() {
@@ -58,6 +59,7 @@ function App() {
             />}>
 
         </Route>
+        <Route path = "/pokequiz" element= {<Quiz />}></Route>
       </Routes>
     </div> 
   );

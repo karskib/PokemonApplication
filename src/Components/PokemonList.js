@@ -11,7 +11,7 @@ export default function PokemonList( {
     pokemonCount,
     setPokemonCount }) {
 
-    const [activeIndex, setActiveIndex] = useState({index: 0,
+    const [activeIndex, setActiveIndex] = useState({name: '',
                                                     status:false})
 
 
@@ -23,7 +23,7 @@ export default function PokemonList( {
         <button className='pokemon-generator' onClick = { getPokemon }>Add</button>
         <div className='poke-container'>
            {pokemonList.map( (elem, i) => {
-                return <div className= { activeIndex.index === i && activeIndex.status ? "pokemon-active": null }
+                return <div className= { activeIndex.name === elem.name && activeIndex.status ? "pokemon-active": null }
                         key = {i}
                         > 
                     <button onClick = {  () => {
@@ -32,7 +32,7 @@ export default function PokemonList( {
                     }}> Delete</button>
                     <button onClick = { ()=>{
                         console.log(activeIndex)
-                            setActiveIndex( {index:i,
+                            setActiveIndex( {name: elem.name,
                                             status: true})
                             setFavPokemon(
                         prevFavs =>{ 
@@ -44,7 +44,7 @@ export default function PokemonList( {
                          )
                     } }> Like</button>
                         <button onClick = { () => {
-                            setActiveIndex( {index: i,
+                            setActiveIndex( {name: elem.name,
                                 status: false})
                             setFavPokemon(
                                 favPokemon.filter( (el) => el.name !==elem.name)
