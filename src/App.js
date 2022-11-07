@@ -59,7 +59,7 @@ function App() {
             />}>
 
         </Route>
-        <Route path = "/pokequiz" element= {<Quiz />}></Route>
+        <Route path = "/pokequiz" element = {<Quiz />}></Route>
       </Routes>
     </div> 
   );

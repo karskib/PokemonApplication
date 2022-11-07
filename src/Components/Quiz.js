@@ -9,13 +9,17 @@ export default function Quiz() {
     const [question, setQuestion] = useState(0)
     const [correctAnswer, setCorrectAnswer] = useState({})
     const [possibleAnswers, setPossibleAnswers] = useState([])
+    const [quizStart, setQuizStart] = useState()
+
+
     const limit = 20
-    const questions = ["q1", "q2","q3"]
+    
+    const questionLimit = 5
 
     const fetchPokeItems = async () =>{
         await getQuizItems(limit)
         .then( (response) => {
-            setPossibleAnswers([...response.results, correctAnswer])
+            setPossibleAnswers([...response.results])
         })
     }
 
@@ -23,30 +27,57 @@ export default function Quiz() {
         await getPokemon(Math.floor(Math.random() * 500))
                     .then( (answer) => { 
                         setCorrectAnswer( { name: answer.name,
-                                    img_back: answer.sprites.back_default,
-                                    img_front: answer.sprites.front_default,
-                                            } )
+                                img_back: answer.sprites.back_default,
+                                img_front: answer.sprites.front_default,
+                                } 
+                            )
                     })
                     
     }
-    useEffect( () => {
-        fetchCorrectAnswer()
+    const fetchQuestions = ( () => {
+         fetchCorrectAnswer()
         fetchPokeItems()
-    }, [question])
+    })
     
-  return (
+    useEffect(() => {
+        fetchQuestions()
+    }, [quizStart])
+    
+
+    const shuffleAnswers = ( arr) => {
+        const shuffledAnswers =  [...arr].sort( ()=> {
+                return 0.5 - Math.random()    
+        })
+        return shuffledAnswers
+    }
+
+    return (<>
+        <button onClick = { () => {
+            fetchQuestions()
+            setQuizStart(true)
+                }
+            }
+            disabled = {quizStart === true ? true : false}
+            >Start Quiz</button>
+        <button onClick = { () => {setQuestion( prev =>
+              { return prev + 1})
+              fetchQuestions()
+                } 
+              }
+              disabled = {question === questionLimit ? true : false} 
+     > Next Question</button> 
+     <button onClick = { () =>{ 
+            setQuizStart(false)
+            setQuestion(0) 
+        }}>Restart</button>
     <div className='quiz-wrapper'>
-       <button onClick = { () => {setQuestion( prev =>
-             { return prev + 1})
-             console.log(possibleAnswers)
-             } 
-    }> Next Question</button> 
         <div> 
             <QuizCard 
             correctAns = {correctAnswer}
-            possibleAnswers = {possibleAnswers} 
+            possibleAnswers = {shuffleAnswers( [...possibleAnswers.slice(0,4), correctAnswer] )} 
             />
         </div>
     </div>
+    </>
   )
 }

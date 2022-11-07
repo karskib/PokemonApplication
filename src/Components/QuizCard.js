@@ -3,13 +3,15 @@ import React from 'react'
 export default function QuizCard( { correctAns, possibleAnswers }) {
   return (
     <div className='card-wrapper'>
-        <img src= {correctAns.img_back} alt= ""></img>
-        <img src= {correctAns.img_front} alt= ""></img>
+            <div className='images-section-card'>
+                <img src= {correctAns.img_back} alt= ""></img>
+                <img src= {correctAns.img_front} alt= ""></img>
+            </div>
         <ul className='answers'>
             {possibleAnswers.map( (el) => {
-                return <li>
+                return <button className='answer-item'>
                     {el.name}
-                </li>
+                        </button>
                 })}
         </ul>
     </div>
