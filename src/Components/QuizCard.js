@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function QuizCard( { correctAns, possibleAnswers }) {
+export default function QuizCard( { correctAns, possibleAnswers, checkAnswer }) {
   return (
     <div className='card-wrapper'>
             <div className='images-section-card'>
@@ -9,7 +9,9 @@ export default function QuizCard( { correctAns, possibleAnswers }) {
             </div>
         <ul className='answers'>
             {possibleAnswers.map( (el) => {
-                return <button className='answer-item'>
+                return <button className='answer-item'
+                        onClick={checkAnswer}
+                        >
                     {el.name}
                         </button>
                 })}

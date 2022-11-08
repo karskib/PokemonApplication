@@ -10,9 +10,9 @@ export default function Quiz() {
     const [correctAnswer, setCorrectAnswer] = useState({})
     const [possibleAnswers, setPossibleAnswers] = useState([])
     const [quizStart, setQuizStart] = useState()
-
-
-    const limit = 20
+    const [score, setScore] = useState(0)
+    const [isNextQuestionLoading, setisNextQuestionLoading] = useState(false)
+    const limit = 4
     
     const questionLimit = 5
 
@@ -35,7 +35,7 @@ export default function Quiz() {
                     
     }
     const fetchQuestions = ( () => {
-         fetchCorrectAnswer()
+        fetchCorrectAnswer()
         fetchPokeItems()
     })
     
@@ -43,12 +43,27 @@ export default function Quiz() {
         fetchQuestions()
     }, [quizStart])
     
+    const restartQuiz = () =>{
+        setScore(0)
+        setQuestion(0)
+        setQuizStart(false)
+    }
 
     const shuffleAnswers = ( arr) => {
         const shuffledAnswers =  [...arr].sort( ()=> {
                 return 0.5 - Math.random()    
         })
         return shuffledAnswers
+    }
+
+    const verifyAnswer = (event) =>{
+        const answer =  event.target.innerText
+        if (question > 4) return
+        if (answer === correctAnswer.name){
+            setScore(prev => {return prev + 1})
+        }
+        setQuestion( prev => {return prev + 1})
+        fetchQuestions()
     }
 
     return (<>
@@ -67,14 +82,17 @@ export default function Quiz() {
               disabled = {question === questionLimit ? true : false} 
      > Next Question</button> 
      <button onClick = { () =>{ 
-            setQuizStart(false)
-            setQuestion(0) 
+            restartQuiz()
         }}>Restart</button>
+            <div>Question goes here{question}</div>
+            <div>Score goes here{score}</div>
     <div className='quiz-wrapper'>
+
         <div> 
             <QuizCard 
             correctAns = {correctAnswer}
-            possibleAnswers = {shuffleAnswers( [...possibleAnswers.slice(0,4), correctAnswer] )} 
+            possibleAnswers = {shuffleAnswers([...possibleAnswers,correctAnswer])}
+            checkAnswer = { verifyAnswer }
             />
         </div>
     </div>

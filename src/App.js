@@ -9,6 +9,7 @@ import Quiz from './Components/Quiz';
 
 
 function App() {
+  
   const [favPokemon, setFavPokemon] = useState([])
   const [pokemonList, setPokemonList] = useState([])
   const [pokemonCount, setPokemonCount] = useState(0)
