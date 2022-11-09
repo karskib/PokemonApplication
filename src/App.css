@@ -5,6 +5,9 @@
 body{
     margin:0;
     padding: 0;
+    background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+
 }
 
 nav{
@@ -15,15 +18,19 @@ nav{
 .poke-container{
     display:grid;
     grid-template-columns: auto auto auto auto;
-    gap:10px;
+    gap:5px;
 }
-
 .wrapper{
-    border: 1px solid black;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.pokemon-main{
+    border: 1px solid black;
+    border-radius:10px; 
+    width:80%;
 }
 
 h3{
@@ -73,8 +80,10 @@ h3{
 }
 
 .title-page{
-    display:flex;
-    justify-content: space-between;
+    width:100%;
+    height:100px;
+    background-image: url("https://www.onlinepalette.com/wp-content/uploads/2021/07/Pokemon-Logo.png");
+    background-size: contain;
 }
 
 .nav-links{
@@ -124,4 +133,23 @@ h3{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+
+.buttons-section{
+    display:flex;
+    justify-content: space-between;
+}
+button{
+    background-image: none;
+    background-color: none;
+    color:black;
+    border-radius:10px;
+}
+
+h1{
+    background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+    text-align: center;
+    color:white;
 }

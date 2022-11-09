@@ -30,7 +30,6 @@ export default function Pokemon( {frontSide,
                    />
                 })}
         </div>
-        <div>Testing</div>
     </div>
   )
 }

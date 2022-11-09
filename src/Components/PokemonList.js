@@ -23,9 +23,10 @@ export default function PokemonList( {
         <button className='pokemon-generator' onClick = { getPokemon }>Add</button>
         <div className='poke-container'>
            {pokemonList.map( (elem, i) => {
-                return <div className= { activeIndex.name === elem.name && activeIndex.status ? "pokemon-active": null }
+                return <div className= { activeIndex.name === elem.name && activeIndex.status ? "pokemon-main pokemon-active": "pokemon-main" }
                         key = {i}
                         > 
+                    <div className='buttons-section'>
                     <button onClick = {  () => {
                         setPokemonList(pokemonList.filter((el) => el.name !== elem.name));
                         setPokemonCount(prev => { return prev - 1; });
@@ -51,6 +52,7 @@ export default function PokemonList( {
                             )
 
                         }}>Dislike</button>
+                        </div>
                         <Pokemon
                             key={elem.name}
                             backSide={elem.back_photo}
