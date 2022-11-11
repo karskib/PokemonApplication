@@ -228,6 +228,8 @@ h1{
     text-align:center;
     margin:0px;
     text-transform: capitalize;
+    display:flex;
+    flex-direction: column;
 }
 
 .list-to-filter > li:hover{
@@ -251,13 +253,18 @@ a{
     text-decoration: none;;
     border: 1px solid white;
     padding: 0 10px;
+    color:white;
+
 }
 a:hover{
+
     text-decoration: underline;
     background-image: none;
     background-color: rgb(222, 227, 230);
 }
-
+a:visited{
+    text-decoration: none;
+}
 .not-active-list-item{
     display:none;
 }

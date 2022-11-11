@@ -64,15 +64,17 @@ export default function PokemonFilter() {
                         key = {el.name}
                        
                         >
+                            <div className='poke-name'>{ el.name }</div>
                         <div className = {activeElement.name === el.name ? "active-list-item" : "not-active-list-item"}>
-                            <div className = "optional-photo" 
+                            <button className = "optional-photo" 
                                 onClick={(e)=> {
                                         fetchPhoto(activeElement.addressUrl)               
-                                }}>Show Image</div>
+                                }}>Show Image</button>
 
                             <img src= {photo} alt = ""></img>
                         </div>
-                        { el.name }</li>} 
+                            
+                        </li>} 
                 )
             }
     </ul>
