@@ -208,3 +208,20 @@ h1{
     font-size:2rem;
     margin-left:40%;
 }
+
+.list-to-filter{
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    gap:10px;
+    justify-content: space-evenly;
+}
+
+.list-to-filter > li {
+    border:1px solid white;
+    border-radius:5px;
+    color:black;
+    padding: 5px;
+    font-weight: 200;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}

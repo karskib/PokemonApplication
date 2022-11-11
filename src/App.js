@@ -6,6 +6,7 @@ import NavBar from './Components/NavBar';
 import FavoritePokemon from "./Components/FavoritePokemon"
 import { getPokemon } from './getPokemon';
 import Quiz from './Components/Quiz';
+import PokemonFilter from './Components/PokemonFilter';
 
 
 function App() {
@@ -58,7 +59,7 @@ function App() {
               favoritePokemons={favPokemon}
             />}/>
         <Route path = "/pokequiz" element = {<Quiz />} />
-        <Route path = "/pokemonFilter" element = {<div>Stuff</div>} />
+        <Route path = "/pokemonFilter" element = {<PokemonFilter />} />
       </Routes>
     </div> 
   );
