@@ -11,6 +11,7 @@ export default function NavBar() {
             <Link to = "/favpokemons">Go to Favorite Pokemons</Link>
             <Link to = "/">Go to Main</Link>
             <Link to = "/pokequiz">Quiz</Link>
+            <Link to = "/pokemonFilter">List & Pokemon Filter</Link>
         </ul>
     </nav>
     </>

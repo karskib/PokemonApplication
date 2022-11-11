@@ -9,7 +9,7 @@ import Quiz from './Components/Quiz';
 
 
 function App() {
-  
+
   const [favPokemon, setFavPokemon] = useState([])
   const [pokemonList, setPokemonList] = useState([])
   const [pokemonCount, setPokemonCount] = useState(0)
@@ -51,16 +51,14 @@ function App() {
             setPokemonCount = {setPokemonCount}
             pokemonCount = {pokemonCount}
             />
-        }>
-        </Route>
+        } />
       <Route path = "/favpokemons" 
             element = { 
             <FavoritePokemon 
               favoritePokemons={favPokemon}
-            />}>
-
-        </Route>
-        <Route path = "/pokequiz" element = {<Quiz />}></Route>
+            />}/>
+        <Route path = "/pokequiz" element = {<Quiz />} />
+        <Route path = "/pokemonFilter" element = {<div>Stuff</div>} />
       </Routes>
     </div> 
   );

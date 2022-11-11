@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { getPokemon } from '../getPokemon'
 import { getQuizItems } from '../getQuizItems'
 import QuizCard from './QuizCard'
-
+import ScoreCard from './ScoreCard'
 
 export default function Quiz() {
     
@@ -11,15 +11,15 @@ export default function Quiz() {
     const [possibleAnswers, setPossibleAnswers] = useState([])
     const [quizStart, setQuizStart] = useState()
     const [score, setScore] = useState(0)
-    const [isNextQuestionLoading, setisNextQuestionLoading] = useState(false)
-    const limit = 4
+    const [isNextQuestionLoading, setisNextQuestionLoading] = useState(true)
+    const limit = 20
     
     const questionLimit = 5
 
     const fetchPokeItems = async () =>{
         await getQuizItems(limit)
         .then( (response) => {
-            setPossibleAnswers([...response.results])
+            setPossibleAnswers(shuffleAnswers([...response.results]).slice(0,4))
         })
     }
 
@@ -27,16 +27,17 @@ export default function Quiz() {
         await getPokemon(Math.floor(Math.random() * 500))
                     .then( (answer) => { 
                         setCorrectAnswer( { name: answer.name,
-                                img_back: answer.sprites.back_default,
-                                img_front: answer.sprites.front_default,
-                                } 
-                            )
+                            img_back: answer.sprites.back_default,
+                            img_front: answer.sprites.front_default,
+                            } 
+                        )
                     })
                     
     }
     const fetchQuestions = ( () => {
-        fetchCorrectAnswer()
-        fetchPokeItems()
+            setisNextQuestionLoading(false)
+            fetchCorrectAnswer()
+            fetchPokeItems()
     })
     
     useEffect(() => {
@@ -66,6 +67,14 @@ export default function Quiz() {
         fetchQuestions()
     }
 
+    const setDisable = () =>{
+        if (question === questionLimit)
+        {
+            return true
+        }
+        else return false
+    }
+
     return (<>
         <button onClick = { () => {
             fetchQuestions()
@@ -79,22 +88,26 @@ export default function Quiz() {
               fetchQuestions()
                 } 
               }
-              disabled = {question === questionLimit ? true : false} 
+              disabled = {setDisable()} 
      > Next Question</button> 
      <button onClick = { () =>{ 
             restartQuiz()
         }}>Restart</button>
-            <div>Question goes here{question}</div>
-            <div>Score goes here{score}</div>
+            <div className='quiz-status'>
+            <div><span>Question no. :</span><span className='quiz-counter'>{question}</span></div>
+            </div>
     <div className='quiz-wrapper'>
-
-        <div> 
+        { question ===questionLimit ? <ScoreCard 
+            score = {score}
+            questionNumbers = {question}
+            /> :
             <QuizCard 
             correctAns = {correctAnswer}
             possibleAnswers = {shuffleAnswers([...possibleAnswers,correctAnswer])}
-            checkAnswer = { verifyAnswer }
+            checkAnswer = { verifyAnswer } 
+            setDisable = {setDisable()}
             />
-        </div>
+            }
     </div>
     </>
   )

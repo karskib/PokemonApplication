@@ -19,7 +19,7 @@ export default function PokemonList( {
     
     <div className='main-wrapper'>
         <div className='counter'> Currently Selected : {pokemonCount} Pokemons</div>
-        <h1>Pokemons</h1>
+        <h1>Random Pokemon Generator</h1>
         <button className='pokemon-generator' onClick = { getPokemon }>Add</button>
         <div className='poke-container'>
            {pokemonList.map( (elem, i) => {
